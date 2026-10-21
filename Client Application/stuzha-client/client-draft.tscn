@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bmlbc5pdeqkwp"]
+
+[ext_resource type="Script" uid="uid://chx70i6n010sj" path="res://getBtnTestingDiagnose.gd" id="1_akrkj"]
+
+[node name="Node2D" type="Node2D" unique_id=1571054214]
+script = ExtResource("1_akrkj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=610357957]
+offset_left = 668.0
+offset_top = 16.0
+offset_right = 1122.0
+offset_bottom = 334.0
+color = Color(0.6392157, 0.11372549, 0.11372549, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1695712357]
+offset_left = 674.0
+offset_top = 23.0
+offset_right = 1115.0
+offset_bottom = 327.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=471307468]
+
+[node name="Button" type="Button" parent="." unique_id=1561950598]
+offset_left = 869.0
+offset_top = 392.0
+offset_right = 1107.0
+offset_bottom = 436.0
+text = "Send request"
