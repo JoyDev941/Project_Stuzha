@@ -1,6 +1,9 @@
-HTTPRequest
-ColorRect
-RichTextLabel
 Button
+ColorRect
+OptionButton
+Label
+VBoxContainer
+HTTPRequest
+RichTextLabel
 LineEdit
 CanvasLayer

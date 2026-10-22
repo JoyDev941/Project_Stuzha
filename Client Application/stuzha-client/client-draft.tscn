@@ -1,29 +1,42 @@
 [gd_scene format=3 uid="uid://bmlbc5pdeqkwp"]
 
-[ext_resource type="Script" uid="uid://chx70i6n010sj" path="res://getBtnTestingDiagnose.gd" id="1_akrkj"]
+[ext_resource type="Script" uid="uid://bnlm88ir7noab" path="res://scripts/GPT_Drive_Draft.gd" id="1_akrkj"]
 
-[node name="Node2D" type="Node2D" unique_id=1571054214]
+[node name="StuzhaPartitionerTool" type="Node2D" unique_id=1571054214]
+position = Vector2(105, 109)
 script = ExtResource("1_akrkj")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=610357957]
-offset_left = 668.0
-offset_top = 16.0
-offset_right = 1122.0
-offset_bottom = 334.0
-color = Color(0.6392157, 0.11372549, 0.11372549, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1082350894]
+visible = false
+offset_right = 439.0
+offset_bottom = 47.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1695712357]
-offset_left = 674.0
-offset_top = 23.0
-offset_right = 1115.0
-offset_bottom = 327.0
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1690237447]
+layout_mode = 2
 
-[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=471307468]
+[node name="DriveDropdown" type="OptionButton" parent="VBoxContainer" unique_id=1690730231]
+layout_mode = 2
 
-[node name="Button" type="Button" parent="." unique_id=1561950598]
-offset_left = 869.0
-offset_top = 392.0
-offset_right = 1107.0
-offset_bottom = 436.0
-text = "Send request"
+[node name="ColorRect" type="ColorRect" parent="." unique_id=610130162]
+offset_left = -104.0
+offset_top = -110.0
+offset_right = 208.0
+offset_bottom = 536.0
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1527788639]
+offset_left = 228.0
+offset_top = -24.0
+offset_right = 1018.0
+offset_bottom = 121.0
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=474060988]
+offset_left = 229.0
+offset_top = 144.0
+offset_right = 613.0
+offset_bottom = 438.0
+
+[node name="Button" type="Button" parent="." unique_id=935205544]
+offset_left = 848.0
+offset_top = 446.0
+offset_right = 1014.0
+offset_bottom = 508.0

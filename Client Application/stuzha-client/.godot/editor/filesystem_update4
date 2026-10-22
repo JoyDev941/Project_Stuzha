@@ -1,2 +1,4 @@
 res://client-draft.tscn
-res://client_draft.gd
+res://scripts/requestDraft.gd
+res://scripts/check_Drives.gd
+res://scripts/GPT_Drive_Draft.gd
