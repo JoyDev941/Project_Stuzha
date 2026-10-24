@@ -1,6 +1,8 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1792668028
-client-draft.tscn::PackedScene::3251460850239586819::1792668047::0::1::::<><><>0<>0<><>::uid://chx70i6n010sj::::res://requestDraft.gd
-icon.svg::CompressedTexture2D::323310346597521443::1792582023::1792582034::1::::<><><>0<>0<>9472a7e2c4099d71e496c34141d24522<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-::res://scripts/::0
-requestDraft.gd::GDScript::5313632018512811281::1792596365::0::1::::<>Node2D<><>0<>0<><>::
+::res://::1792670946
+client-draft.tscn::PackedScene::3251460850239586819::1792670872::0::1::::<><><>0<>0<><>::uid://bnlm88ir7noab::::res://scripts/GPT_Drive_Draft.gd
+icon.svg::CompressedTexture2D::323310346597521443::1792670872::1792670872::1::::<><><>0<>0<>9472a7e2c4099d71e496c34141d24522<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://scripts/::1792670872
+check_Drives.gd::GDScript::8818190443943169466::1792670872::0::1::::<>Node<><>0<>0<><>::
+GPT_Drive_Draft.gd::GDScript::3322373087838920897::1792670872::0::1::::<>Node2D<><>0<>0<><>::
+requestDraft.gd::GDScript::5313632018512811281::1792670872::0::1::::<>Node2D<><>0<>0<><>::

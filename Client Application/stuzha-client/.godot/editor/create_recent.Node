@@ -1,9 +1,13 @@
 Button
-ColorRect
+Panel
 OptionButton
-Label
-VBoxContainer
-HTTPRequest
 RichTextLabel
+VBoxContainer
+Control
+Node
+NinePatchRect
+ColorRect
+Label
+HTTPRequest
 LineEdit
 CanvasLayer

@@ -2,41 +2,99 @@
 
 [ext_resource type="Script" uid="uid://bnlm88ir7noab" path="res://scripts/GPT_Drive_Draft.gd" id="1_akrkj"]
 
-[node name="StuzhaPartitionerTool" type="Node2D" unique_id=1571054214]
-position = Vector2(105, 109)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdysd"]
+bg_color = Color(0.08627451, 0.13333334, 0.19607843, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hk32t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t8es"]
+bg_color = Color(0.081558816, 0.12839532, 0.1922645, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akrkj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14509805, 0.39215687, 0.7411765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[node name="Control" type="Control" unique_id=1204786166]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_akrkj")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1082350894]
-visible = false
-offset_right = 439.0
-offset_bottom = 47.0
+[node name="_volume_information_panel" type="Panel" parent="." unique_id=1969875265]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 253.0
+offset_right = 673.0
+offset_bottom = 453.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdysd")
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1690237447]
+[node name="_drives_panel" type="Panel" parent="." unique_id=129066696]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 72.0
+offset_right = 1123.0
+offset_bottom = 222.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdysd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="_drives_panel" unique_id=2111341685]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.5
+offset_top = -20.0
+offset_right = 412.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DriveDropdown" type="OptionButton" parent="_drives_panel/VBoxContainer" unique_id=600488215]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_hk32t")
 
-[node name="DriveDropdown" type="OptionButton" parent="VBoxContainer" unique_id=1690730231]
-layout_mode = 2
+[node name="_left_panel" type="Panel" parent="." unique_id=849175804]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3t8es")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=610130162]
-offset_left = -104.0
-offset_top = -110.0
-offset_right = 208.0
-offset_bottom = 536.0
+[node name="_volume_information_panel2" type="Panel" parent="." unique_id=3733695]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 484.0
+offset_right = 1123.0
+offset_bottom = 624.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hdysd")
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1527788639]
-offset_left = 228.0
-offset_top = -24.0
-offset_right = 1018.0
-offset_bottom = 121.0
-
-[node name="ColorRect3" type="ColorRect" parent="." unique_id=474060988]
-offset_left = 229.0
-offset_top = 144.0
-offset_right = 613.0
-offset_bottom = 438.0
-
-[node name="Button" type="Button" parent="." unique_id=935205544]
-offset_left = 848.0
-offset_top = 446.0
-offset_right = 1014.0
-offset_bottom = 508.0
+[node name="Button" type="Button" parent="_volume_information_panel2" unique_id=1473733968]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -30.0
+offset_right = -20.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_akrkj")
+text = "NEXT"

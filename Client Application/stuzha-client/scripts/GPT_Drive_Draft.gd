@@ -1,6 +1,5 @@
-extends Node2D
-
-@onready var drive_dropdown: OptionButton = $VBoxContainer/DriveDropdown
+extends Control
+@onready var drive_dropdown: OptionButton = $_drives_panel/VBoxContainer/DriveDropdown
 
 var available_drives: Array[Dictionary] = []
 
@@ -16,7 +15,7 @@ func detect_drives():
 	var output: Array = []
 
 	var exit_code = OS.execute(
-		"/usr/bin/lsblk",
+		"lsblk",
 		[
 			"--json",
 			"--bytes",
