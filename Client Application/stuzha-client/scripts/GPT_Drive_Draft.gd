@@ -1,5 +1,5 @@
 extends Control
-@onready var drive_dropdown: OptionButton = $_drives_panel/VBoxContainer/DriveDropdown
+@onready var drive_dropdown: OptionButton = $_drives_panel/DriveDropdown
 
 var available_drives: Array[Dictionary] = []
 

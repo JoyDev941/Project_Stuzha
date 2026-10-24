@@ -1,3 +1,4 @@
+Label
 Button
 Panel
 OptionButton
@@ -7,7 +8,6 @@ Control
 Node
 NinePatchRect
 ColorRect
-Label
 HTTPRequest
 LineEdit
 CanvasLayer
