@@ -9,8 +9,8 @@
 
 WebServer server(80);
 
-    //--------------------------Support Code-----------------------------------
-    
+//--------------------------Support Code-----------------------------------
+
 String diagnostics() {
     String ip = "IP address: " + WiFi.localIP().toString() + "\n";
     String freeHeap = "Free heap space: " + String(ESP.getFreeHeap()) + " bytes\n";
@@ -23,8 +23,7 @@ String diagnostics() {
     return info;
 }//return information about resources in the esp32
 
-
-String root_folder(){
+String root_folder(){//
 
     JsonDocument doc;
     
@@ -56,6 +55,15 @@ bool testSD(){//SD01BOOL
     }
 }
 
+bool testWiFi(){
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    if(WiFi.status() == WL_CONNECTED){
+        return true;
+    }else{
+        return false;        
+    }
+}
+
 void setup(){
     Serial.begin(9600); //temporary to check where it will connect
 
@@ -71,10 +79,9 @@ void setup(){
 
     //WIFI01SET
     pinMode(wifi_signal, OUTPUT);
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-    while (WiFi.status() != WL_CONNECTED) {
-        Serial.println("Connecting...");
-        delay(5000);
+    bool init = false;
+    while (while init == false) {
+        init = testWiFi();
     }
     delay(3000);
     digitalWrite(wifi_signal, HIGH);//end wifi setup
