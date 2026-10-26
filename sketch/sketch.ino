@@ -10,8 +10,7 @@
 WebServer server(80);
 
     //--------------------------Support Code-----------------------------------
-
-
+    
 String diagnostics() {
     String ip = "IP address: " + WiFi.localIP().toString() + "\n";
     String freeHeap = "Free heap space: " + String(ESP.getFreeHeap()) + " bytes\n";
@@ -45,24 +44,32 @@ String root_folder(){
     return json;
 }//check the current directory
 
+bool testSD(){//SD01BOOL
+    if(SD.begin(5)){
+        delay(3000);
+        digitalWrite(sd_signal, HIGH);// if connected light up led.
+        return true;
+    }
+    else{
+        digitalWrite(sd_signal, LOW);
+        return false;
+    }
+}
 
 void setup(){
     Serial.begin(9600); //temporary to check where it will connect
 
     //--------------------------Modules-----------------------------------
 
-    //SD Card Setup
+    //SD01SET
     pinMode(sd_signal, OUTPUT);
-    while(!SD.begin(5)) {
-        Serial.println("SD card failed, retrying ...");
-        delay(1000);
-        return;
+    bool init = false;
+    while(init == false){
+        init = testSD();
     }
-    delay(3000);
-    digitalWrite(sd_signal, HIGH);// if connected light up led.
+    
 
-
-    //wifi setup
+    //WIFI01SET
     pinMode(wifi_signal, OUTPUT);
     WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
     while (WiFi.status() != WL_CONNECTED) {
