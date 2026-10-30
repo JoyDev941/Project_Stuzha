@@ -9,7 +9,32 @@
 
 WebServer server(80);
 
-//--------------------------Support Code-----------------------------------
+//--------------------------Setup code -----------------------------------
+
+bool testSD(){//SD01BOOL
+    if(SD.begin(5)){
+        delay(3000);
+        digitalWrite(sd_signal, HIGH);// if connected light up led.
+        return true;
+    }
+    else{
+        digitalWrite(sd_signal, LOW);
+        delay(3000);
+        digitalWrite(wifi_signal, HIGH);//end wifi setup
+        return false;
+    }
+}
+
+bool testWiFi(){//WIFI01BOOL
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    if(WiFi.status() == WL_CONNECTED){
+        return true;
+    }else{
+        return false;        
+    }
+}
+
+//--------------------------Setup Endpoint-----------------------------------
 
 String diagnostics() {
     String ip = "IP address: " + WiFi.localIP().toString() + "\n";
@@ -23,19 +48,23 @@ String diagnostics() {
     return info;
 }//return information about resources in the esp32
 
-String root_folder(){//
+String ret_dir(String body){ //return directory
 
-    JsonDocument doc;
+    JsonDocument doc; //allows you to store and manipulate json file.
+
+    DeserializationError error = deserializeJson(doc, body); //parse received strin to json
+
+    const char* dir = doc["path"]; //extract data linked to path
     
-    File root = SD.open("/");
-    File entry;
+    File root = SD.open(dir); //Allows you to have a handle in the directory to interact with it.
+    File entry; //Initialised for each entry in root
 
     while((entry = root.openNextFile())){
         doc["files"].add(entry.name());
         entry.close();
     }
 
-    root.close();
+    root.close(); //free up ram space.
 
     String json;
     serializeJson(doc, json);
@@ -43,28 +72,14 @@ String root_folder(){//
     return json;
 }//check the current directory
 
-bool testSD(){//SD01BOOL
-    if(SD.begin(5)){
-        delay(3000);
-        digitalWrite(sd_signal, HIGH);// if connected light up led.
-        return true;
-    }
-    else{
-        digitalWrite(sd_signal, LOW);
-        return false;
-    }
-}
 
-bool testWiFi(){
-    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-    if(WiFi.status() == WL_CONNECTED){
-        return true;
-    }else{
-        return false;        
-    }
-}
+//Upload
+
+
+//--------------------------Init Server-----------------------------------
 
 void setup(){
+
     Serial.begin(9600); //temporary to check where it will connect
 
     //--------------------------Modules-----------------------------------
@@ -79,20 +94,22 @@ void setup(){
 
     //WIFI01SET
     pinMode(wifi_signal, OUTPUT);
-    bool init = false;
-    while (while init == false) {
-        init = testWiFi();
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(3000);
     }
-    delay(3000);
     digitalWrite(wifi_signal, HIGH);//end wifi setup
+    
 
     //--------------------------Endpoints-----------------------------------
+
     server.on("/diagnose", HTTP_GET, [](){
         server.send(200, "appplication/json", diagnostics());
     });
 
-    server.on("/root", HTTP_GET, []() { //return folder content
-        server.send(200, "application/json", root_folder());
+    server.on("/directory", HTTP_POST, []() { //return folder content
+        String request_body = server.arg("plain");
+        server.send(200, "application/json", ret_dir(request_body));
     });
 
     server.begin();
