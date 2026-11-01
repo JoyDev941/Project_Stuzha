@@ -9,6 +9,14 @@
 
 WebServer server(80);
 
+
+//Active global Variables
+
+
+File uploadFile;//Upload Global variable
+bool uploadFailed = false;
+size_t uploadedBytes = 0; //end
+
 //--------------------------Setup code -----------------------------------
 
 bool testSD(){//SD01BOOL
@@ -75,6 +83,30 @@ String ret_dir(String body){ //return directory
 
 //Upload
 
+void return receive_file(){
+    HTTPUpload& upload = server.upload();
+
+    else if (upload.status == UPLOAD_FILE_WRITE){
+        if(!uploadFailed && uploadFile){
+            size_t written = uploadFile.write(
+                upload.buf,
+                upload.currentSize
+            );
+            if(written!= upload.currentSize){
+                uploadFailed = true;
+            }
+
+            uploadedBytes += written;
+        }
+    }
+    else if (upload.status == UPLOAD_FILE_END){
+        if(uploadFile){
+            uploadFile.close();
+        }
+    }
+
+}
+
 
 //--------------------------Init Server-----------------------------------
 
@@ -111,6 +143,12 @@ void setup(){
         String request_body = server.arg("plain");
         server.send(200, "application/json", ret_dir(request_body));
     });
+
+    server.on("/upload", HTTP_POST, []() {
+
+    },
+    receive_file
+);
 
     server.begin();
 }
